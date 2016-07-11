@@ -1,0 +1,13 @@
+What is this?
+	YoctoStudy - a yocto (custom linux distribution generator) study project.
+
+What you need first?
+	~50GB free disk space
+	Fast internet with unlimited data transfer
+
+How to build a distro?
+	0. sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib  build-essential chrpath socat libsdl1.2-dev xterm
+	1. cd poky
+	2. source oe-init-build-env
+	3. bitbake core-image-sato # NOTICE: this will download a few gigs, build a few dozens of gigs and take several hours to finish on 2 core cpu
+	4. runqemu qemux86
