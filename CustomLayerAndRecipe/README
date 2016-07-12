@@ -1,0 +1,45 @@
+What is this?
+	CustomLayerRecipe - an example of adding a custom layer and a custom recipe to yocto image
+
+What you need first?
+	~50GB free disk space
+	Fast internet with unlimited data transfer
+
+How to build a distro?
+	0. sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib  build-essential chrpath socat libsdl1.2-dev xterm
+	1. cd poky
+	2. source oe-init-build-env
+	3. bitbake core-image-sato # NOTICE: this will download a few gigs, build a few dozens of gigs and take several hours to finish on 2 core cpu
+	4. runqemu qemux86
+	5. > CustomRecipeDemo # run the demo app built from custom recipe
+
+How to actually create a custom layer?
+	0. source oe-init-build-env
+	1. yocto-layer create custom # this will run a wizard and also add example recipe
+	2. in "build/conf/bblayers.conf" add : "${BSPDIR}/meta-custom \"
+	3. under build/
+		bitbake-layers show-layers # verify the layers shows up on the list
+	
+And how to add a custom recipe?
+	1. create "meta-custom/recipes-demo/custom-recipe-demo/custom-recipe-demo_0.1.bb # 0.1 is ${PV} version
+	2. add the recipe to "build/conf/local.conf": "IMAGE_INSTALL_append = " custom-recipe-demo"
+	3. under build/
+		bitbake-layers show-recipes | grep -A 1 custom-recipe-demo # verify the recipe shows up on the list
+	
+	Example content of custom-recipe-demo_0.1.bb:
+		# cmake.bbclass knows how to deal with cmake based projects
+		inherit cmake 
+		
+		# setup the source code directory
+		S = "${WORKDIR}/git"
+		
+		# short project description and license
+		DESCRIPTION = "Custom recipe demo that simply prints out a message."
+		LICENSE = "CLOSED"
+		
+		# list of project dependencies separated by spaces. Not needed for now
+		# DEPENDS = " "
+		
+		# project source location and commit revision (revision must be kept up to date manually)
+		SRC_URI = "git://github.com/mateuszmidor/YoctoStudy;protocol=http;branch=custom_recipe_demo"
+		SRCREV = "f21f9a42b0f9abd8a34490d1c9091cc2406db976"
