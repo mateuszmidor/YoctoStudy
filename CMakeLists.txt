@@ -12,4 +12,10 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG  "-O0 -g")
 
 # Add executable target	
-add_executable(CustomRecipeDemo "source/main.cpp")
+add_executable(CustomRecipeDemo 
+                "source/main.cpp")
+
+# Add install target
+install(TARGETS CustomRecipeDemo
+        DESTINATION bin
+)
