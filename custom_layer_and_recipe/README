@@ -1,5 +1,5 @@
 What is this?
-	CustomLayerRecipe - an example of adding a custom layer and a custom recipe to yocto image
+	custom_layer_and_recipe - an example of adding a custom layer and a custom recipe to yocto image
 
 What you need first?
 	~50GB free disk space
@@ -7,7 +7,7 @@ What you need first?
 
 How to build a distro?
 	0. sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib  build-essential chrpath socat libsdl1.2-dev xterm
-	1. cd poky
+	1. cd custom_layer_and_recipe
 	2. source oe-init-build-env
 	3. bitbake core-image-sato # NOTICE: this will download a few gigs, build a few dozens of gigs and take several hours to finish on 2 core cpu
 	4. runqemu qemux86
@@ -16,7 +16,7 @@ How to build a distro?
 How to actually create a custom layer?
 	0. source oe-init-build-env
 	1. yocto-layer create custom # this will run a wizard and also add example recipe
-	2. in "build/conf/bblayers.conf" add : "${BSPDIR}/meta-custom \"
+	2. in "build/conf/bblayers.conf" add: "${BSPDIR}/meta-custom \"
 	3. under build/
 		bitbake-layers show-layers # verify the layers shows up on the list
 	
