@@ -1,5 +1,6 @@
 What is this?
 	custom_layer_and_recipe - an example of adding a custom layer and a custom recipe to yocto image
+	see: http://hambedded.org/blog/2012/11/24/from-bitbake-hello-world-to-an-image/
 
 What you need first?
 	~50GB free disk space
