@@ -2,11 +2,7 @@ What is this?
 	bitbake_hello_world - bitbake build system simplistic example. Based on:
 	http://www.yoctoproject.org/docs/2.1/bitbake-user-manual/bitbake-user-manual.html#hello-world-example
 
-What you need first?
-	 shell configured with: source poky/oe-init-build-env
-
 How to run it?
-	0. source poky/oe-init-build-env
 	1. cd bitbake_hello_world  
 	2. source config_env.sh
 	3. bitbake printhello 
