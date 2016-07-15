@@ -4,5 +4,5 @@ What is this?
 
 How to run it?
 	1. cd bitbake_hello_world  
-	2. source config_env.sh
+	2. source config_env.sh (in fresh terminal)
 	3. bitbake printhello 
