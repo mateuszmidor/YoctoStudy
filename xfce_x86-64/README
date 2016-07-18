@@ -1,0 +1,21 @@
+What is this?
+	genericx86-64 - an example PC targeted image
+
+What you need first?
+	~50GB free disk space
+	Fast internet with unlimited data transfer
+
+How to build and install a distro?
+	0. sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib  build-essential chrpath socat libsdl1.2-dev xterm
+	1. cd genericx86-64
+	2. source oe-init-build-env
+	3. bitbake core-image-minimal # NOTICE: this will download a few gigs, build a few dozens of gigs and take several hours to finish on 2 core cpu
+	4. dd if=core-image-minimal-genericx86-64.hddimg of=/dev/sdb # copy image to HDD partition.
+		see: https://www.yoctoproject.org/downloads/bsps/krogoth21/generic-x86
+	
+
+How to actually change target machine to genericx86?
+	0. cd genericx86-64
+	1. git clone git://git.yoctoproject.org/meta-intel -b krogoth
+	2. in "build/conf/local.conf" add: MACHINE = "genericx86-64" # or "genericx86"
+	
