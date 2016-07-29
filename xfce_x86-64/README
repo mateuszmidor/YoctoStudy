@@ -1,5 +1,5 @@
 What is this?
-	xfce_x86-64 - an example PC targeted image with xfce graph env
+	xfce_x86-64 - an example PC targeted image with xfce graph env and development tools
 
 What you need first?
 	~50GB free disk space
@@ -19,7 +19,7 @@ How to actually add xfce to core-image-minimal?
 	1. git clone git://git.yoctoproject.org/meta-openembedded -b krogoth
 	2. in "build/conf/local.conf" add:
 		IMAGE_INSTALL_append = " packagegroup-xfce-base"
-		IMAGE_FEATURES += "package-management x11-base ssh-server-dropbear hwcodecs dev-pkgs"
+		IMAGE_FEATURES += "package-management x11-base ssh-server-dropbear hwcodecs dev-pkgs tools-sdk"
 	3. in "build/conf/bblayers:
 		BSPDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE', True)) + '/../..')}"
 		BBLAYERS ?= " \
@@ -31,5 +31,6 @@ How to actually add xfce to core-image-minimal?
 		  ${BSPDIR}/meta-openembedded/meta-python \
 		  ${BSPDIR}/meta-openembedded/meta-multimedia \
 		  ${BSPDIR}/meta-openembedded/meta-xfce \
+		  ${BSPDIR}/openembedded-core/meta \
 		  "
 	
